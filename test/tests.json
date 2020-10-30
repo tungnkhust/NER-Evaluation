@@ -1,0 +1,68 @@
+{
+  "tests": [
+    {
+      "y_true": "O B-LOC I-LOC O",
+      "y_pred": "O B-LOC I-LOC O",
+      "metrics": "",
+      "precision_score": "",
+      "recall_score": "",
+      "f1_score": ""
+    },
+    {
+      "y_true": "O O O O",
+      "y_pred": "O B-ORG I-ORG O",
+      "metrics": "",
+      "precision_score": "",
+      "recall_score": "",
+      "f1_score": ""
+    },
+    {
+      "y_true": "O B-LOC I-LOC O",
+      "y_pred": "O O O O",
+      "metrics": "",
+      "precision_score": "",
+      "recall_score": "",
+      "f1_score": ""
+    },
+    {
+      "y_true": "O O O B-LOC I-LOC O",
+      "y_pred": "O O O B-ORG I-ORG O",
+      "metrics": "",
+      "precision_score": "",
+      "recall_score": "",
+      "f1_score": ""
+    },
+    {
+      "y_true": "O B-PER I-PER O",
+      "y_pred": "B-PER I-PER I-PER O",
+      "metrics": "",
+      "precision_score": "",
+      "recall_score": "",
+      "f1_score": ""
+    },
+    {
+      "y_true": "O B-PER I-PER O",
+      "y_pred": "B-ORG I-ORG I-ORG O",
+      "metrics": "",
+      "precision_score": "",
+      "recall_score": "",
+      "f1_score": ""
+    },
+    {
+      "y_true": "O B-PER O O",
+      "y_pred": "O O B-ORG O",
+      "metrics": "",
+      "precision_score": "",
+      "recall_score": "",
+      "f1_score": ""
+    },
+    {
+      "y_true": "O B-PER I-PER O B-ORG I-ORG 0",
+      "y_pred": "O B-PER I-PER O O B-ORG B-LOC",
+      "metrics": "",
+      "precision_score": "",
+      "recall_score": "",
+      "f1_score": ""
+    },
+]
+}
