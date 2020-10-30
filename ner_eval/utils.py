@@ -61,9 +61,9 @@ def compare(e_true: dict, e_pred: dict):
         else:
             return 2
     if e1 < s2:
-        return 3
-    if e2 < s1:
         return 4
+    if e2 < s1:
+        return 5
 
 
 def get_metric(y_true: list, y_pred: list):
