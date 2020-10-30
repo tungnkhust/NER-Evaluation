@@ -15,4 +15,4 @@ And the `precision score`, `recall score`, `f1-score` are computed with differen
 - actual(act) = cor + inc + par + spu = TP + FP
 - precision_score = cor/act = TP/(TP + FP)
 - recall_score = cor/pos = TP/(TP + FN)
-- f1-score = 2*precision_score*recall_score/(precision_score + recall_score)
+- f1-score = 2\*precision_score*recall_score/(precision_score + recall_score)
