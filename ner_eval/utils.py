@@ -117,11 +117,11 @@ def get_metric(y_true: list, y_pred: list):
             metrics['par'] += 1
             del entities_true[0]
             del entities_pred[0]
-        elif state == 3:
+        elif state == 4:
             metrics['mis'] += 1
             missing.append(e1)
             del entities_true[0]
-        elif state == 4:
+        elif state == 5:
             metrics['spu'] += 1
             spurius.append(e2)
             del entities_pred[0]
