@@ -1,5 +1,5 @@
 from typing import List
-from eval.utils import get_metric
+from ner_eval.utils import get_metric
 
 
 def get_metrics(y_true: List[List], y_pred: List[List]):
@@ -24,9 +24,9 @@ def get_metrics(y_true: List[List], y_pred: List[List]):
         metrics['mis'] += metric['mis']
         metrics['spu'] += metric['spu']
         metrics['support'] += metric['support']
-        incorrects.append({i: incorrect})
-        missings.append({i: missing})
-        spuriuses.append({i: spurius})
+        incorrects.append(incorrect)
+        missings.append(missing)
+        spuriuses.append(spurius)
     return metrics, incorrects, missings, spuriuses
 
 
