@@ -30,7 +30,7 @@ def get_metrics(y_true: List[List], y_pred: List[List]):
     return metrics, incorrects, missings, spuriuses
 
 
-def precision_score(y_true: List[List], y_pred: List[List], epsilon=1e-6):
+def precision_score(y_true: List[List], y_pred: List[List], epsilon=1e-6, soft_eval=False):
     """
     Compute the precision score.
     :param y_true: List of ground truth labels, Each label is list of tag for each tokens.
@@ -40,11 +40,14 @@ def precision_score(y_true: List[List], y_pred: List[List], epsilon=1e-6):
     """
     metrics, _, _, _ = get_metrics(y_true, y_pred)
     act = metrics['cor'] + metrics['inc'] + metrics['par'] + metrics['spu']
-    precision = (metrics['cor'] + epsilon) / (act + epsilon)
+    if soft_eval is True:
+        precision = (metrics['cor'] + metrics['par'] + epsilon) / (act + epsilon)
+    else:
+        precision = (metrics['cor'] + epsilon) / (act + epsilon)
     return precision
 
 
-def recall_score(y_true: List[List], y_pred: List[List], epsilon=1e-6):
+def recall_score(y_true: List[List], y_pred: List[List], epsilon=1e-6, soft_eval=False):
     """
     Compute the recall score.
     :param y_true: List of ground truth labels, Each label is list of tag for each tokens.
@@ -54,11 +57,14 @@ def recall_score(y_true: List[List], y_pred: List[List], epsilon=1e-6):
     """
     metrics, _, _, _ = get_metrics(y_true, y_pred)
     pos = metrics['cor'] + metrics['inc'] + metrics['par'] + metrics['mis']
-    recall = (metrics['cor']+epsilon)/(pos+epsilon)
+    if soft_eval is True:
+        recall = (metrics['cor'] + metrics['par'] + epsilon)/(pos+epsilon)
+    else:
+        recall = (metrics['cor']+epsilon)/(pos+epsilon)
     return recall
 
 
-def f1_score(y_true: List[List], y_pred: List[List], epsilon=1e-6):
+def f1_score(y_true: List[List], y_pred: List[List], epsilon=1e-6, soft_eval=False):
     """
     Compute the f1-score.
     :param y_true: List of ground truth labels, Each label is list of tag for each tokens.
@@ -69,8 +75,12 @@ def f1_score(y_true: List[List], y_pred: List[List], epsilon=1e-6):
     metrics, _, _, _ = get_metrics(y_true, y_pred)
     act = metrics['cor'] + metrics['inc'] + metrics['par'] + metrics['spu']
     pos = metrics['cor'] + metrics['inc'] + metrics['par'] + metrics['mis']
-    precision = (metrics['cor']+epsilon)/(act+epsilon)
-    recall = (metrics['cor']+epsilon)/(pos+epsilon)
+    if soft_eval is True:
+        precision = (metrics['cor'] + metrics['par'] + epsilon)/(act+epsilon)
+        recall = (metrics['cor'] + metrics['par'] + epsilon)/(pos+epsilon)
+    else:
+        precision = (metrics['cor']+epsilon)/(act+epsilon)
+        recall = (metrics['cor']+epsilon)/(pos+epsilon)
     f1_score = (2*precision*recall)/(precision + recall)
     return f1_score
 
